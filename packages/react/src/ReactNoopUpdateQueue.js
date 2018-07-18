@@ -9,6 +9,7 @@ import warning from 'fbjs/lib/warning';
 
 const didWarnStateUpdateForUnmountedComponent = {};
 
+/* 警告 */
 function warnNoop(publicInstance, callerName) {
   if (__DEV__) {
     const constructor = publicInstance.constructor;
@@ -35,6 +36,7 @@ function warnNoop(publicInstance, callerName) {
 /**
  * This is the abstract API for an update queue.
  */
+/* 一个更新队列的抽象API */
 const ReactNoopUpdateQueue = {
   /**
    * Checks whether or not this composite component is mounted.
@@ -43,6 +45,7 @@ const ReactNoopUpdateQueue = {
    * @protected
    * @final
    */
+  /* 校验组件是否已被挂载 */
   isMounted: function(publicInstance) {
     return false;
   },
@@ -62,6 +65,7 @@ const ReactNoopUpdateQueue = {
    * @param {?string} callerName name of the calling function in the public API.
    * @internal
    */
+  /* 强制更新 */
   enqueueForceUpdate: function(publicInstance, callback, callerName) {
     warnNoop(publicInstance, 'forceUpdate');
   },
@@ -79,6 +83,7 @@ const ReactNoopUpdateQueue = {
    * @param {?string} callerName name of the calling function in the public API.
    * @internal
    */
+  /* 重置state */
   enqueueReplaceState: function(
     publicInstance,
     completeState,
