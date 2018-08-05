@@ -20,6 +20,7 @@ function Component(props, context, updater) {
   this.refs = emptyObject;
   // We initialize the default updater but the real one gets injected by the
   // renderer.
+  /* 我们初始化默认更新器，但是实际上会由render注入一个新的 */
   this.updater = updater || ReactNoopUpdateQueue;
 }
 
@@ -84,6 +85,7 @@ Component.prototype.forceUpdate = function(callback) {
  * we would like to deprecate them, we're not going to move them over to this
  * modern base class. Instead, we define a getter that warns if it's accessed.
  */
+/* 检查已经弃用的API */
 if (__DEV__) {
   const deprecatedAPIs = {
     isMounted: [
