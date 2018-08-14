@@ -108,9 +108,11 @@ function defineRefPropWarningGetter(props, displayName) {
  * @param {*} props
  * @internal
  */
+/* 创建react元素的工厂方法 */
 const ReactElement = function(type, key, ref, self, source, owner, props) {
   const element = {
     // This tag allows us to uniquely identify this as a React Element
+    /* 这个标志可以用来鉴别一个react元素 */
     $$typeof: REACT_ELEMENT_TYPE,
 
     // Built-in properties that belong on the element
@@ -180,9 +182,11 @@ export function createElement(type, config, children) {
   let source = null;
 
   if (config != null) {
+    /* 校验是否是有效的ref */
     if (hasValidRef(config)) {
       ref = config.ref;
     }
+    /* 校验是否是有效的key */
     if (hasValidKey(config)) {
       key = '' + config.key;
     }
@@ -190,7 +194,9 @@ export function createElement(type, config, children) {
     self = config.__self === undefined ? null : config.__self;
     source = config.__source === undefined ? null : config.__source;
     // Remaining properties are added to a new props object
+    /* 剩余属性会被加入到一个新的props对象中 */
     for (propName in config) {
+      /* 检查是否存在该属性并且该属性并不是保留属性 */
       if (
         hasOwnProperty.call(config, propName) &&
         !RESERVED_PROPS.hasOwnProperty(propName)
@@ -202,6 +208,7 @@ export function createElement(type, config, children) {
 
   // Children can be more than one argument, and those are transferred onto
   // the newly allocated props object.
+  /* chidren可以不止一个，如果超过则转入到一个新的props对象中 */
   const childrenLength = arguments.length - 2;
   if (childrenLength === 1) {
     props.children = children;
@@ -212,6 +219,7 @@ export function createElement(type, config, children) {
     }
     if (__DEV__) {
       if (Object.freeze) {
+        /* DEV环境下冻结 */
         Object.freeze(childArray);
       }
     }
@@ -219,6 +227,7 @@ export function createElement(type, config, children) {
   }
 
   // Resolve default props
+  /* 处理defaultProps，如果props中没有对应值，则把defaultProps赋值给它 */
   if (type && type.defaultProps) {
     const defaultProps = type.defaultProps;
     for (propName in defaultProps) {

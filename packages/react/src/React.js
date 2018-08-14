@@ -33,6 +33,7 @@ import {
 import ReactDebugCurrentFrame from './ReactDebugCurrentFrame';
 
 const React = {
+  /* Children的方法 */
   Children: {
     map,
     forEach,
@@ -41,8 +42,11 @@ const React = {
     only,
   },
 
+  /* 创建ref */
   createRef,
+  /* Component基类 */
   Component,
+  /* PureComponent基类 */
   PureComponent,
 
   createContext,
@@ -52,11 +56,13 @@ const React = {
   StrictMode: REACT_STRICT_MODE_TYPE,
   unstable_AsyncMode: REACT_ASYNC_MODE_TYPE,
 
+  /* 在dev环境下会使用携带验证的方法 */
   createElement: __DEV__ ? createElementWithValidation : createElement,
   cloneElement: __DEV__ ? cloneElementWithValidation : cloneElement,
   createFactory: __DEV__ ? createFactoryWithValidation : createFactory,
   isValidElement: isValidElement,
 
+  /* 版本 */
   version: ReactVersion,
 
   __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: {
