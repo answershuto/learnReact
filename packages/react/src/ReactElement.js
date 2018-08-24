@@ -22,6 +22,7 @@ const RESERVED_PROPS = {
 
 let specialPropKeyWarningShown, specialPropRefWarningShown;
 
+/* 校验是否是有效的ref */
 function hasValidRef(config) {
   if (__DEV__) {
     if (hasOwnProperty.call(config, 'ref')) {
@@ -34,6 +35,7 @@ function hasValidRef(config) {
   return config.ref !== undefined;
 }
 
+/* 校验是否是有效的key */
 function hasValidKey(config) {
   if (__DEV__) {
     if (hasOwnProperty.call(config, 'key')) {
@@ -170,6 +172,7 @@ const ReactElement = function(type, key, ref, self, source, owner, props) {
  * Create and return a new ReactElement of the given type.
  * See https://reactjs.org/docs/react-api.html#createelement
  */
+/* 创建并返回一个新的react元素 */
 export function createElement(type, config, children) {
   let propName;
 

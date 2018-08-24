@@ -373,10 +373,12 @@ type Root = {
   _internalRoot: FiberRoot,
 };
 
+/* react根节点构造器 */
 function ReactRoot(container: Container, isAsync: boolean, hydrate: boolean) {
   const root = DOMRenderer.createContainer(container, isAsync, hydrate);
   this._internalRoot = root;
 }
+/* 根节点render函数 */
 ReactRoot.prototype.render = function(
   children: ReactNodeList,
   callback: ?() => mixed,
