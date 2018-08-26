@@ -1119,6 +1119,7 @@ function createPortal(
   return ReactPortal.createPortal(children, container, null, key);
 }
 
+/* react dom对象 */
 const ReactDOM: Object = {
   createPortal,
 
@@ -1163,6 +1164,7 @@ const ReactDOM: Object = {
     );
   },
 
+  /* react dom 的 render 方法，一般react程序的入口render */
   render(
     element: React$Element<any>,
     container: DOMContainer,
